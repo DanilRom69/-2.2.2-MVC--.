@@ -1,6 +1,7 @@
 package web.model;
 
 public class Car {
+
     private String model;
     private String manufacturer;
     private int year;
@@ -11,6 +12,7 @@ public class Car {
         this.year = year;
     }
 
+    // Геттеры и сеттеры
     public String getModel() {
         return model;
     }

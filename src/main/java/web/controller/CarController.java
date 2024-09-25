@@ -15,6 +15,7 @@ public class CarController {
 
     private final CarService carService;
 
+    // Инжектирование зависимости через конструктор
     @Autowired
     public CarController(CarService carService) {
         this.carService = carService;
@@ -22,12 +23,10 @@ public class CarController {
 
     @GetMapping("/cars")
     public String showCars(@RequestParam(value = "count", required = false) Integer count, Model model) {
-        List<Car> cars;
         if (count == null || count >= 5) {
-            cars = carService.getCars(5);  // Показываем весь список (5 машин)
-        } else {
-            cars = carService.getCars(count);  // Показываем указанное количество машин
+            count = 5;
         }
+        List<Car> cars = carService.getCars(count);
         model.addAttribute("cars", cars);
         return "cars";
     }
